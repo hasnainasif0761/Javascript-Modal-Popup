@@ -15,11 +15,36 @@
     </div>
 
     <!-- Modal Structure -->
-    
+    <div id="modal" class="w-full h-screen bg-gray-800/40 fixed flex justify-center items-center hidden">
+        <div class="w-[27rem] h-1/2 bg-white text-start px-6 py-2 ">
+            <button id="closeModal" class="text-4xl float-right text-gray-400">&times;</button>
+            <h2 class="mt-9 text-3xl font-bold mb-3">Welcome to the Modal!</h2>
+            <p class="text-gray-500 mb-2">This is a popup modal window. You can close it by:</p>
+            <ul>
+                <li class="text-gray-500 mb-1">Clicking the X button</li>
+                <li class="text-gray-500 mb-1">Click Outside the modal</li>
+                <li class="text-gray-500 mb-1">Pressing the Escap key</li>
+            </ul>
+            <button class="action-btn px-6 py-2 border rounded-lg mt-3 bg-purple-400">Take Action</button>
+        </div>
+    </div>
 
-
-
-
+    <script>
+       let OpenModal = document.getElementById('openModal');
+       let modal = document.getElementById('modal');
+       let closeModal = document.getElementById('closeModal');
+       OpenModal.addEventListener('click',()=>{
+        modal.style.display = 'flex';
+       })
+       closeModal.addEventListener('click',()=>{
+        modal.style.display = 'none'
+       }) 
+       document.addEventListener('keydown',()=>{
+        if(event.key == 'Escape'){
+            modal.style.display = 'none';
+        }
+       })
+    </script>
 
 </body>
 </html>
