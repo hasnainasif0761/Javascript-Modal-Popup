@@ -11,11 +11,11 @@
     <div class="w-[400px]  h-1/4 text-center text-white">
         <h1 class="text-center mt-1 text-3xl font-bold tracking-wider">Model Popup</h1>
         <p class="mt-4 text-[15px] mb-4 tracking-wide">Click the button and then open the modal of  window</p>
-        <button id="openModal" class="bg-gray-100 px-6 py-3 rounded-full text-black font-semibold hover:bg-white transition ">Open Modal</button>
+        <button id="openModal" class="bg-gray-100 px-6 py-3 rounded-full text-black font-semibold hover:bg-white transition outline-none">Open Modal</button>
     </div>
 
     <!-- Modal Structure -->
-    <div id="modal" class="w-full h-screen bg-gray-800/40 fixed flex justify-center items-center hidden">
+    <div id="modal" class="w-full h-screen bg-gray-800/40 fixed inset-0 flex justify-center items-center invisible opacity-0 transition-all duration-300 ease-in-out">
         <div class="w-[27rem] h-1/2 bg-white text-start px-6 py-2 ">
             <button id="closeModal" class="text-4xl float-right text-gray-400">&times;</button>
             <h2 class="mt-9 text-3xl font-bold mb-3">Welcome to the Modal!</h2>
@@ -30,20 +30,24 @@
     </div>
 
     <script>
-       let OpenModal = document.getElementById('openModal');
-       let modal = document.getElementById('modal');
-       let closeModal = document.getElementById('closeModal');
-       OpenModal.addEventListener('click',()=>{
-        modal.style.display = 'flex';
-       })
-       closeModal.addEventListener('click',()=>{
-        modal.style.display = 'none'
-       }) 
-       document.addEventListener('keydown',()=>{
-        if(event.key == 'Escape'){
-            modal.style.display = 'none';
-        }
-       })
+                let OpenModal = document.getElementById('openModal');
+        let modal = document.getElementById('modal');
+        let closeModal = document.getElementById('closeModal');
+
+        OpenModal.addEventListener('click', ()=>{
+            modal.classList.remove('opacity-0','invisible');
+            modal.classList.add('opacity-100','visible');
+        });
+
+        closeModal.addEventListener('click', ()=>{
+            modal.classList.remove('opacity-100','visible');
+            modal.classList.add('opacity-0','invisible');
+        });
+        document.addEventListener('keydown',()=>{
+            modal.classList.remove('opacity-100','visible')
+            modal.classList.add('opacity-0','invisible')
+        })
+
     </script>
 
 </body>
